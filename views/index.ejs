@@ -1,0 +1,80 @@
+<%- include('./partials/header.ejs') -%>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#50b4d4" />
+<meta name="description"
+    content="Tôi Bị Gay Blog. Code lởm đừng chê" />
+<meta property="og:type" content="CyberDevs Blog">
+<link rel="icon" type="image/png" href="../public/images/favicon.ico">
+<meta property="og:title" content="BLOG TÔI BỊ GAY || TOIBI.GAY">
+<meta property="og:description"
+    content="Tôi Bị Gay Blog. Code lởm đừng chê">
+<meta name="keywords"
+    content="Tôi Bị Gay Blog. Code lởm đừng chê">
+<meta property="og:image" content="../public/images/AB.png" />
+<title>CyberDevs Blog</title>
+</head>
+
+<body>
+    <header id="header" class="fixed-top d-flex align-items-center">
+        <div class="container d-flex align-items-center">
+            <h1 class="logo me-auto"><a href="/">CyberDevs Blog<span>.</span></a></h1>
+        </div>
+    </header>
+    <main id="main">
+
+        <section id="blog" class="blog">
+            
+            <div class="container" data-aos="fade-up">
+                <% if(blogs.length<1){%>
+
+                <p class="text-black">Không có post đang tồn tại. Hãy tạo một cái</p>
+
+                <%  } %>
+
+                <div class="row">
+
+                    <div class="col-lg-8 entries">
+
+                        <% blogs.forEach(blog=>{ %>
+                      
+                        <p style="display:none; position:absolute" id="blogId"><%= blog.id  %> </p>
+                        <article class="entry">
+
+                            <h2 class="entry-title">
+                                <a href="blogs/<%=blog.slug %>"><%= blog.title %></a>
+                            </h2>
+                            <div class="entry-meta">
+                                <ul>
+                                    <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
+                                            href="blogs/<%=blog.slug %>"><%= blog.author%></a></li>
+                                    <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a
+                                            href="blogs/<%=blog.slug %>"><time
+                                                datetime="2020-01-01"><%= blog.timeCreated.toLocaleDateString() %></time></a>
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                            <div class="entry-content">
+
+                                <p>
+                                    <%= blog.description.replace(/<[^>]+>/g, ' ').slice(0,105).concat('...')%>
+                                </p>
+
+                                <div class="read-more">
+                                    <a href="blogs/<%=blog.slug %>">Đọc Thêm Tại</a>
+                                </div>
+                            </div>
+                        </article>
+                        <% }) %>
+                    </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+    <%- include('./partials/footer.ejs') -%>

@@ -1,0 +1,41 @@
+<%- include('./partials/header.ejs') -%>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>tinymce.init({ selector: 'textarea' });</script>
+    <title>Tạo Post Mới</title>
+</head>
+
+<body>
+
+    <div class="container reply-form">
+        <h1 class="mb-4 text-black">Tạo Post Mới</h1>
+        <title>CyberDevs Blog</title>
+
+
+        <form action="/blogs" method="POST" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-10 mb-3 form-group">
+                    <input type="text" class="form-control" placeholder="Tiêu Đề" name="title" required>
+                </div>
+                <div class="col-md-10 mb-3 form-group">
+                    <input type="text" class="form-control" placeholder="Người Tạo" name="author" required>
+                </div>
+                <div class="col-md-10 mb-3 form-group">
+                    <textarea name="description" placeholder="Nội Dung Chính" class="form-control" rows="20" cols="50"></textarea>
+                </div>
+                <div class="col-md-10 mb-3 form-group">
+                    <input type="text" class="form-control" placeholder="Thêm Thẻ (Có thể thêm nhiều thẻ bằng cách dúng dấu  ' , ' )" name="tags" required>
+                </div>
+                <div class="col-md-10 mb-3 form-group">
+                    Thêm Ảnh Chính: Đang Bảo Trì<!-- <input type="file" name="image" id="image" class="form-control-file text-black"> -->
+                </div>
+
+
+                <div class="col-md-10 mb-3 form-group">
+                    <a href="/" class="btn btn-warning">Huỷ</a>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+           
+        </form>
+    </div>
+
+<%- include('./partials/footer.ejs') -%>
